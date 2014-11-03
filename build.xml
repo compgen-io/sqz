@@ -28,7 +28,7 @@
             classpath="${lib.dir}/jarjar-1.4.jar"/>
         <jarjar jarfile="${dist.dir}/sqz.jar">
             <manifest>
-                <attribute name="Main-Class" value="org.ngsutils.sqz.SQZMain"/>
+                <attribute name="Main-Class" value="org.ngsutils.sqz.cli.SQZMain"/>
             </manifest>
             <zipfileset src="${lib.dir}/objenesis-2.1.jar"/>
             <zipfileset src="${lib.dir}/jewelcli-0.8.9.jar"/>

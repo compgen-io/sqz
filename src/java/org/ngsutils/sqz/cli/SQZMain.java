@@ -1,4 +1,4 @@
-package org.ngsutils.sqz;
+package org.ngsutils.sqz.cli;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -11,10 +11,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.ngsutils.sqz.cli.FastqToSqz;
-import org.ngsutils.sqz.cli.SqzText;
-import org.ngsutils.sqz.cli.SqzToFastq;
-import org.ngsutils.sqz.cli.SqzVerify;
 import org.ngsutils.support.cli.Command;
 import org.ngsutils.support.cli.Exec;
 
@@ -50,9 +46,9 @@ public class SQZMain {
 			System.err.println(msg);
 			System.err.println();
 		}
-		System.err.println("SQZMainJ - Tools for processing NGS datafiles");
+		System.err.println("SQZ - Utilities for working with SQZ files");
 		System.err.println("");
-		System.err.println("Usage: ngsutilsj cmd {options}");
+		System.err.println("Usage: sqz cmd {options}");
 		System.err.println("");
 		System.err.println("Available commands:");
 		int minsize = 12;
