@@ -125,6 +125,9 @@ public class SQZChunkInputStream extends InputStream {
      * [magic2] is either SQZ.MAGIC_DATA_CHUNK or SQZ.MAGIC_TEXT_CHUNK
      * [comp_len] is the compressed data length
      * 
+     * 
+     * magic2 does two things: 1) tells us what kind of chunk this is (text vs data)
+     *                         2) acts as a marker that decryption worked properly
      */
     
     protected boolean readChunk() throws IOException {

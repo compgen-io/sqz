@@ -1,4 +1,3 @@
-sqz
+SQZ: File format for high throughput sequencing archival storage
 ===
 
-SQZ - file format for archiving raw genome sequencing data
