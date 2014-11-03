@@ -92,7 +92,7 @@ public class SqzToFastq extends AbstractCommand {
     @Override
     public void exec() throws NGSUtilsException {        
         if (filename == null) {
-            throw new ArgumentValidationException("You must specify an input FQA file!");
+            throw new ArgumentValidationException("You must specify an input SQZ file!");
         }
         if (split && (outTemplate == null || outTemplate.equals("-"))) {
             throw new ArgumentValidationException("You cannot have split output to stdout!");
@@ -202,16 +202,9 @@ public class SqzToFastq extends AbstractCommand {
                 }
             }
     
-            long i=0;
             String lastName = null;
     
             for (FastqRead read: reader) {
-                if (verbose) {
-                    i++;
-                    if (i % 100000 == 0) {
-                        System.err.println("Read: " + i);
-                    }
-                }
                 if (split && read.getName().equals(lastName)) {
                     read.write(outs[1]);
                 } else {

@@ -33,7 +33,7 @@
             <zipfileset src="${lib.dir}/objenesis-2.1.jar"/>
             <zipfileset src="${lib.dir}/jewelcli-0.8.9.jar"/>
             <zipfileset src="${lib.dir}/commons-compress-1.8.1.jar"/>
-            <zipfileset src="${lib.dir}/ngsutilsj-0.2-b0b1827.jar"/>
+            <zipfileset src="${lib.dir}/ngsutilsj-0.2-0cb0fe8.jar"/>
             <fileset dir="${build.dir}/classes"/>
         </jarjar>
         <delete file="${dist.dir}/cgsutils"/>
