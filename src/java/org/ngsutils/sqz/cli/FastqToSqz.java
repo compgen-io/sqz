@@ -25,8 +25,8 @@ import com.lexicalscope.jewel.cli.CommandLineInterface;
 import com.lexicalscope.jewel.cli.Option;
 import com.lexicalscope.jewel.cli.Unparsed;
 
-@CommandLineInterface(application = "sqz fastq")
-@Command(name = "fastq", desc = "Converts a FASTQ file (or two paired files) into a SQZ file", cat="sqz", experimental=true)
+@CommandLineInterface(application = "sqz convert")
+@Command(name = "convert", desc = "Converts a FASTQ file (or two paired files) into a SQZ file", cat="sqz", experimental=true)
 public class FastqToSqz extends AbstractCommand {
     public class AnnotationValue {
         public final String name;

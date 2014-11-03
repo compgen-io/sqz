@@ -22,8 +22,8 @@
     <target name="jar" depends="compile, git.revision">
         <delete file="${build.dir}/classes/VERSION"/>
         <echo file="${build.dir}/classes/VERSION" message="sqz-${version}-${repository.version}"/>
-
         <mkdir dir="${dist.dir}"/>
+        <jar destfile="${dist.dir}/sqz-api-${version}-${repository.version}.jar" basedir="${build.dir}/classes"/>
         <taskdef name="jarjar" classname="com.tonicsystems.jarjar.JarJarTask"
             classpath="${lib.dir}/jarjar-1.4.jar"/>
         <jarjar jarfile="${dist.dir}/sqz.jar">
