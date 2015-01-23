@@ -125,7 +125,16 @@ public class SQZWriter {
         }
         
         if (dcos != null) {
-            readCount ++;        
+            readCount ++;
+            /* 
+             * TODO: change this so that we don't write X number
+             *       of reads, but rather Y number of raw bytes.
+             *       This should be done at the SQZChunkOutputStream
+             *       level. I still like the idea of writing whole
+             *       sequences in the same chunk, but if we have
+             *       one *really* long read, it should be stored 
+             *       by itself as a chunk of one.
+             */ 
             if (readCount > chunkSize ) {
                 dcos.flush();
                 readCount = 0;
