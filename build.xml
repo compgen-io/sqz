@@ -20,6 +20,8 @@
     </target>
 
     <target name="jar" depends="compile, git.revision">
+        <copy file="LICENSE" todir="${build.dir}/classes/"/>
+        <copy file="INCLUDED" todir="${build.dir}/classes/"/>
         <delete file="${build.dir}/classes/VERSION"/>
         <echo file="${build.dir}/classes/VERSION" message="sqz-${version}-${repository.version}"/>
         <mkdir dir="${dist.dir}"/>
@@ -33,7 +35,6 @@
             <zipfileset src="${lib.dir}/objenesis-2.1.jar"/>
             <zipfileset src="${lib.dir}/jewelcli-0.8.9.jar"/>
             <zipfileset src="${lib.dir}/commons-compress-1.8.1.jar"/>
-            <zipfileset src="${lib.dir}/sam-1.113.jar"/>
             <zipfileset src="${lib.dir}/ngsutilsj-0.2-0cb0fe8.jar"/>
             <fileset dir="${build.dir}/classes"/>
         </jarjar>
