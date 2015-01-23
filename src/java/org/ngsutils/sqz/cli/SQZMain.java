@@ -234,7 +234,7 @@ public class SQZMain {
 		showFile("LICENSE");
 		System.err.println();
 		System.err.println();
-		showFile("INCLUDED");
+		showFile("INCLUDES");
 	}
 
 }
