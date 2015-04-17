@@ -1,6 +1,7 @@
 <project name="sqz" default="jar">
     <property name="version" value="0.1"/>
     <property name="lib.dir" value="lib"/>
+    <property name="blib.dir" value="blib"/>
     <property name="build.dir" value="build"/>
     <property name="dist.dir" value="dist"/>
     <property name="src.dir" value="src"/>
@@ -16,7 +17,20 @@
 
     <target name="compile">
         <mkdir dir="${build.dir}/classes"/>
-        <javac srcdir="${src.dir}/java" destdir="${build.dir}/classes" classpathref="classpath" debug="true" debuglevel="lines,vars,source"/>
+        <javac
+            srcdir="${src.dir}/java"
+            destdir="${build.dir}/classes"
+            compiler="com.google.errorprone.ErrorProneAntCompilerAdapter"
+            encoding="UTF-8"
+            debug="true"
+            includeantruntime="false"
+            classpathref="classpath"
+            debuglevel="lines,vars,source"
+            >
+            <compilerclasspath>
+                <fileset file="${blib.dir}/error_prone_ant-2.0.2-SNAPSHOT.jar"/>
+            </compilerclasspath>
+        </javac>
     </target>
 
     <target name="jar" depends="compile, git.revision">
@@ -27,22 +41,24 @@
         <mkdir dir="${dist.dir}"/>
         <jar destfile="${dist.dir}/sqz-api-${version}-${repository.version}.jar" basedir="${build.dir}/classes"/>
         <taskdef name="jarjar" classname="com.tonicsystems.jarjar.JarJarTask"
-            classpath="${lib.dir}/jarjar-1.4.jar"/>
-        <jarjar jarfile="${dist.dir}/sqz.jar">
+            classpath="${blib.dir}/jarjar-1.4.jar"/>
+        <jarjar jarfile="${dist.dir}/sqz.jar.tmp">
             <manifest>
-                <attribute name="Main-Class" value="org.ngsutils.sqz.cli.SQZMain"/>
+                <attribute name="Main-Class" value="io.compgen.sqz.cli.SQZMain"/>
             </manifest>
-            <zipfileset src="${lib.dir}/objenesis-2.1.jar"/>
-            <zipfileset src="${lib.dir}/jewelcli-0.8.9.jar"/>
             <zipfileset src="${lib.dir}/commons-compress-1.8.1.jar"/>
-            <zipfileset src="${lib.dir}/ngsutilsj-0.2-0cb0fe8.jar"/>
+            <zipfileset src="${lib.dir}/compgen-cmdline-0.4.1.jar"/>
+            <zipfileset src="${lib.dir}/compgen-common-0.1.jar"/>
+            <zipfileset src="${lib.dir}/ngsutilsj-0.3.jar"/>
             <fileset dir="${build.dir}/classes"/>
+        	<zap pattern="*.java"/>
         </jarjar>
-        <delete file="${dist.dir}/cgsutils"/>
+        <delete file="${dist.dir}/sqz"/>
         <concat destfile="${dist.dir}/sqz" binary="true">
              <fileset file="${src.dir}/scripts/stub.sh" />
-             <fileset file="${dist.dir}/sqz.jar" />
+             <fileset file="${dist.dir}/sqz.jar.tmp" />
         </concat>
+        <delete file="${dist.dir}/sqz.jar.tmp"/>
         <chmod file="${dist.dir}/sqz" perm="755"/>
     </target>
 
