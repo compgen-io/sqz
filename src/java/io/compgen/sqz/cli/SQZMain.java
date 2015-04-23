@@ -12,7 +12,7 @@ public class SQZMain {
                 .setProgName("sqz")
                 .setHelpHeader("SQZ - Secure sequencing read archiver\n---------------------------------------")
                 .setDefaultUsage("Usage: sqz cmd [options]")
-                .setHelpFooter("http://compgen.io/sqz\n"+MainBuilder.readFile("VERSION"))
+                .setHelpFooter("http://compgen.io/sqz\n"+MainBuilder.readFile("io/compgen/sqz/VERSION"))
                 .setCategoryOrder(new String[] { "sqz", "help"})
                 .addCommand(License.class)
                 .addCommand(Help.class)
@@ -25,5 +25,8 @@ public class SQZMain {
             e.printStackTrace();
             System.exit(1);
         }
+
 	}
+	
 }
+

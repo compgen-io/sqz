@@ -36,10 +36,10 @@
     <target name="jar" depends="compile, git.revision">
         <copy file="LICENSE" todir="${build.dir}/classes/"/>
         <copy file="INCLUDES" todir="${build.dir}/classes/"/>
-        <delete file="${build.dir}/classes/VERSION"/>
-        <echo file="${build.dir}/classes/VERSION" message="sqz-${version}-${repository.version}"/>
+        <delete file="${build.dir}/classes/io/compgen/sqz/VERSION"/>
+        <echo file="${build.dir}/classes/io/compgen/sqz/VERSION" message="sqz-${version}-${repository.version}"/>
         <mkdir dir="${dist.dir}"/>
-        <jar destfile="${dist.dir}/sqz-api-${version}-${repository.version}.jar" basedir="${build.dir}/classes"/>
+        <jar destfile="${dist.dir}/sqz-api-${version}.jar" basedir="${build.dir}/classes"/>
         <taskdef name="jarjar" classname="com.tonicsystems.jarjar.JarJarTask"
             classpath="${blib.dir}/jarjar-1.4.jar"/>
         <jarjar jarfile="${dist.dir}/sqz.jar.tmp">
