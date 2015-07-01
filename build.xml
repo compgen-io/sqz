@@ -48,7 +48,7 @@
             </manifest>
             <zipfileset src="${lib.dir}/commons-compress-1.8.1.jar"/>
             <zipfileset src="${lib.dir}/compgen-cmdline-0.4.1.jar"/>
-            <zipfileset src="${lib.dir}/compgen-common-0.1.jar"/>
+            <zipfileset src="${lib.dir}/compgen-common-0.2.jar"/>
             <zipfileset src="${lib.dir}/ngsutilsj-0.3.jar"/>
             <fileset dir="${build.dir}/classes"/>
         	<zap pattern="*.java"/>
